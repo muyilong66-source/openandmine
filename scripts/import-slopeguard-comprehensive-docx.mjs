@@ -1,5 +1,5 @@
 /**
- * Import 绿色装配式支护…对比表.docx → docs/slopeguard/products/comprehensive-solution.mdx
+ * Import 绿色装配式支护…对比表.docx → 请写入 docs/slopeguard/products/flexible-slope/*.mdx（原 comprehensive-solution 已拆页）
  * 图片 → static/img/slopeguard/flexible-slope/
  *
  * Run: node scripts/import-slopeguard-comprehensive-docx.mjs
@@ -16,7 +16,7 @@ const DOCX_NAME =
 const docxPath = path.join(siteRoot, 'docs/slopeguard/products', DOCX_NAME);
 const outMdx = path.join(
   siteRoot,
-  'docs/slopeguard/products/comprehensive-solution.mdx',
+  'docs/slopeguard/products/flexible-slope/installation.mdx',
 );
 const imgDir = path.join(siteRoot, 'static/img/slopeguard/flexible-slope');
 const IMG_URL = '/img/slopeguard/flexible-slope';

@@ -100,12 +100,14 @@ const config = {
             position: 'left',
             className: 'gw-navbar-pillar gw-navbar-pillar--minetreat',
           },
+          /* 临时隐藏「关于我们」顶栏入口（文档仍保留，恢复时取消注释本段）
           {
             label: '关于我们',
             to: '/docs/about/intro',
             position: 'left',
             className: 'gw-navbar-pillar gw-navbar-pillar--about',
           },
+          */
           {
             label: '联系我们 182-0106-9835',
             href: 'tel:18201069835',
@@ -187,6 +189,7 @@ const config = {
               },
             ],
           },
+          /* 临时隐藏页脚「关于我们」列（恢复时取消注释）
           {
             title: '关于我们',
             items: [
@@ -196,6 +199,7 @@ const config = {
               {label: '加入我们', to: '/docs/about/join/why-us'},
             ],
           },
+          */
         ],
         copyright: `Copyright © ${new Date().getFullYear()} GeoWatch Solutions. Built with Docusaurus.`,
       },

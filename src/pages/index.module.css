@@ -36,7 +36,9 @@
   max-width: min(22rem, 26vw);
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 0.65rem;
 }
 
 .heroVisualLeft {
@@ -45,6 +47,30 @@
 
 .heroVisualRight {
   justify-content: flex-end;
+}
+
+.heroCaption {
+  margin: 0;
+  width: 100%;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--ifm-color-content-secondary);
+}
+
+.heroCaptionLink {
+  color: var(--ifm-color-primary-light);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.heroCaptionLink:hover {
+  color: var(--ifm-color-primary-lighter);
+  border-bottom-color: rgba(125, 211, 252, 0.55);
 }
 
 .heroImageWrap {
@@ -135,6 +161,11 @@
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+  }
+
+  .heroCaption {
+    font-size: 0.78rem;
+    padding: 0 0.25rem;
   }
 
   .heroImageWrap {

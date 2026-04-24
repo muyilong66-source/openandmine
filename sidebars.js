@@ -126,7 +126,17 @@ const sidebars = {
       label: '解决方案及产品',
       collapsed: false,
       items: [
-        'slopeguard/products/comprehensive-solution',
+        {
+          type: 'category',
+          label: '绿色装配式柔性护坡',
+          collapsed: false,
+          items: [
+            'slopeguard/products/flexible-slope/installation',
+            'slopeguard/products/flexible-slope/specs',
+            'slopeguard/products/flexible-slope/principle',
+            'slopeguard/products/flexible-slope/case-studies',
+          ],
+        },
         {
           type: 'category',
           label: '主/被动防护网',
@@ -275,58 +285,67 @@ const sidebars = {
     },
   ],
 
-  aboutSidebar: [
-    {
-      type: 'category',
-      label: '关于我们',
-      collapsed: true,
-      items: ['about/intro'],
-    },
-    {
-      type: 'category',
-      label: '公司简介',
-      collapsed: true,
-      items: [
-        'about/company/overview',
-        'about/company/development',
-        'about/company/qualifications',
-        'about/company/partners',
-      ],
-    },
-    {
-      type: 'category',
-      label: '团队风采',
-      collapsed: true,
-      items: [
-        'about/team/management',
-        'about/team/technical',
-        'about/team/field-team',
-        'about/team/team-activities',
-      ],
-    },
-    {
-      type: 'category',
-      label: '企业文化',
-      collapsed: true,
-      items: [
-        'about/culture/vision',
-        'about/culture/mission',
-        'about/culture/values',
-        'about/culture/social-responsibility',
-      ],
-    },
-    {
-      type: 'category',
-      label: '加入我们',
-      collapsed: true,
-      items: [
-        'about/join/why-us',
-        'about/join/positions',
-        'about/join/benefits',
-        'about/join/contact',
-      ],
-    },
-  ],
+  /**
+   * 临时隐藏「关于我们」文档侧栏（`/docs/about/*` 仍可手动访问 URL）。
+   * 恢复：将 `aboutSidebar` 设为下方 `ABOUT_SIDEBAR_RESTORE` 数组（或从 Git 历史还原）。
+   */
+  aboutSidebar: [],
 };
+
+/** 供恢复 about 侧栏时复制到 `sidebars` 的 `aboutSidebar` 字段 */
+const ABOUT_SIDEBAR_RESTORE = [
+  {
+    type: 'category',
+    label: '关于我们',
+    collapsed: true,
+    items: ['about/intro'],
+  },
+  {
+    type: 'category',
+    label: '公司简介',
+    collapsed: true,
+    items: [
+      'about/company/overview',
+      'about/company/development',
+      'about/company/qualifications',
+      'about/company/partners',
+    ],
+  },
+  {
+    type: 'category',
+    label: '团队风采',
+    collapsed: true,
+    items: [
+      'about/team/management',
+      'about/team/technical',
+      'about/team/field-team',
+      'about/team/team-activities',
+    ],
+  },
+  {
+    type: 'category',
+    label: '企业文化',
+    collapsed: true,
+    items: [
+      'about/culture/vision',
+      'about/culture/mission',
+      'about/culture/values',
+      'about/culture/social-responsibility',
+    ],
+  },
+  {
+    type: 'category',
+    label: '加入我们',
+    collapsed: true,
+    items: [
+      'about/join/why-us',
+      'about/join/positions',
+      'about/join/benefits',
+      'about/join/contact',
+    ],
+  },
+];
+
+void ABOUT_SIDEBAR_RESTORE;
 
 export default sidebars;

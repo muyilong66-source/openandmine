@@ -11,6 +11,12 @@ import styles from './index.module.css';
 const HERO_IMAGE_LEFT = '/img/home-hero-slope.png';
 const HERO_IMAGE_RIGHT = '/img/slopeguard/flexible-slope/image7.png';
 
+/** 图下可点击标题 */
+const HERO_LEFT_CAPTION = '柔性测斜仪';
+const HERO_LEFT_CAPTION_TO = '/docs/geowatch/products/flex-inclinometer/installation';
+const HERO_RIGHT_CAPTION = '绿色装配式柔性护坡';
+const HERO_RIGHT_CAPTION_TO = '/docs/slopeguard/products/flexible-slope/case-studies';
+
 const featureList = [
   {
     title: '矿山（边坡）监测 GeoWatch',
@@ -51,6 +57,8 @@ const featureList = [
   {
     title: '关于我们',
     icon: '🤝',
+    /** 临时隐藏首页卡片；恢复：设为 false 或删除本字段 */
+    hidden: true,
     description: (
       <>
         GeoWatch Solutions 团队与文化。
@@ -87,23 +95,25 @@ export function HomepageFeatures() {
       <div className="container">
         <header className={styles.featuresHeader}>
           <Heading as="h2" className={styles.featuresHeading}>
-            四大业务板块
+            三大业务板块
           </Heading>
           <p className={styles.featuresIntro}>
-            监测、防护、治理与团队 — 一站式工程与文档中心
+            监测、防护、治理 — 一站式工程与文档中心
           </p>
         </header>
         <div className="row">
-          {featureList.map((props) => (
-            <Feature key={props.title} {...props} />
-          ))}
+          {featureList
+            .filter((props) => !props.hidden)
+            .map((props) => (
+              <Feature key={props.title} {...props} />
+            ))}
         </div>
       </div>
     </section>
   );
 }
 
-function HeroSideVisual({src, alt, side}) {
+function HeroSideVisual({src, alt, side, caption, captionTo}) {
   return (
     <div
       className={clsx(
@@ -121,6 +131,13 @@ function HeroSideVisual({src, alt, side}) {
         />
         <div className={styles.heroImageScrim} aria-hidden />
       </div>
+      {caption && captionTo ? (
+        <p className={styles.heroCaption}>
+          <Link className={styles.heroCaptionLink} to={captionTo}>
+            {caption}
+          </Link>
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -136,6 +153,8 @@ function HomepageHeader() {
           src={heroLeftSrc}
           alt="边坡工程现场：车载钻机与分级边坡施工"
           side="left"
+          caption={HERO_LEFT_CAPTION}
+          captionTo={HERO_LEFT_CAPTION_TO}
         />
         <div className={styles.heroText}>
           <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
@@ -161,6 +180,8 @@ function HomepageHeader() {
           src={heroRightSrc}
           alt="边坡工程防护（绿色装配式柔性护坡）"
           side="right"
+          caption={HERO_RIGHT_CAPTION}
+          captionTo={HERO_RIGHT_CAPTION_TO}
         />
       </div>
     </header>
@@ -172,7 +193,7 @@ export default function Home() {
   return (
     <Layout
       title={siteConfig.title}
-      description="GeoWatch Solutions — 矿山（边坡）监测、边坡工程防护、矿山环境治理（酸性废水）与关于我们。">
+      description="GeoWatch Solutions — 矿山（边坡）监测、边坡工程防护、矿山环境治理（酸性废水）。">
       <HomepageHeader />
       <main className={styles.homeMain}>
         <div id="gw-four-pillars" className={styles.pillarsWrap}>
