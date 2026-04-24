@@ -16,7 +16,7 @@ const config = {
   },
 
   url: 'https://geowatch-solutions.example.com',
-  baseUrl: '/',
+  baseUrl: '/openandmine/',
 
   organizationName: 'geowatch-solutions',
   projectName: 'geowatch-solutions',
