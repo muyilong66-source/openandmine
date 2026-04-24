@@ -52,8 +52,8 @@
 .heroCaption {
   margin: 0;
   width: 100%;
-  font-size: 0.82rem;
-  line-height: 1.4;
+  font-size: 1.15rem;
+  line-height: 1.45;
   text-align: center;
   color: var(--ifm-color-content-secondary);
 }
@@ -61,7 +61,7 @@
 .heroCaptionLink {
   color: var(--ifm-color-primary-light);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   border-bottom: 1px solid transparent;
   transition:
     color 0.15s ease,
@@ -71,6 +71,23 @@
 .heroCaptionLink:hover {
   color: var(--ifm-color-primary-lighter);
   border-bottom-color: rgba(125, 211, 252, 0.55);
+}
+
+/* 图下说明里「点我看看」：高对比、易扫读 */
+.heroCaptionCta {
+  color: #fde047;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 0 1px rgba(15, 23, 42, 0.9),
+    0 0 14px rgba(250, 204, 21, 0.45);
+}
+
+.heroCaptionLink:hover .heroCaptionCta {
+  color: #fef08a;
+  text-shadow:
+    0 0 1px rgba(15, 23, 42, 0.9),
+    0 0 18px rgba(253, 224, 71, 0.55);
 }
 
 .heroImageWrap {
@@ -164,8 +181,8 @@
   }
 
   .heroCaption {
-    font-size: 0.78rem;
-    padding: 0 0.25rem;
+    font-size: 1.05rem;
+    padding: 0 0.35rem;
   }
 
   .heroImageWrap {
@@ -328,6 +345,11 @@
   .heroImageWrap {
     max-height: 14rem;
     border-radius: 12px;
+  }
+
+  .heroCaption {
+    font-size: clamp(1rem, 3.8vw, 1.12rem);
+    padding: 0 0.5rem;
   }
 
   .heroTitle {

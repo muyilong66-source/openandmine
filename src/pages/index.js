@@ -11,10 +11,8 @@ import styles from './index.module.css';
 const HERO_IMAGE_LEFT = '/img/home-hero-slope.png';
 const HERO_IMAGE_RIGHT = '/img/slopeguard/flexible-slope/image7.png';
 
-/** 图下可点击标题 */
-const HERO_LEFT_CAPTION = '柔性测斜仪';
+/** 图下可点击说明（「点我看看」在样式中突出） */
 const HERO_LEFT_CAPTION_TO = '/docs/geowatch/products/flex-inclinometer/installation';
-const HERO_RIGHT_CAPTION = '绿色装配式柔性护坡';
 const HERO_RIGHT_CAPTION_TO = '/docs/slopeguard/products/flexible-slope/case-studies';
 
 const featureList = [
@@ -153,7 +151,12 @@ function HomepageHeader() {
           src={heroLeftSrc}
           alt="边坡工程现场：车载钻机与分级边坡施工"
           side="left"
-          caption={HERO_LEFT_CAPTION}
+          caption={
+            <>
+              柔性测斜仪（
+              <span className={styles.heroCaptionCta}>点我看看</span>）
+            </>
+          }
           captionTo={HERO_LEFT_CAPTION_TO}
         />
         <div className={styles.heroText}>
@@ -180,7 +183,12 @@ function HomepageHeader() {
           src={heroRightSrc}
           alt="边坡工程防护（绿色装配式柔性护坡）"
           side="right"
-          caption={HERO_RIGHT_CAPTION}
+          caption={
+            <>
+              绿色装配式柔性护坡（
+              <span className={styles.heroCaptionCta}>点我看看</span>）
+            </>
+          }
           captionTo={HERO_RIGHT_CAPTION_TO}
         />
       </div>

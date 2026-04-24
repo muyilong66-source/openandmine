@@ -151,9 +151,23 @@ body,
   opacity: 1;
 }
 
-.navbar .navbar__link:hover,
-.navbar .navbar__link--active {
+.navbar .navbar__link:hover {
   color: var(--ifm-navbar-link-hover-color);
+}
+
+/* 当前所在板块：明显放大加粗 + 浅底，凸显当前板块 */
+.navbar .navbar__link--active {
+  color: #e0f2fe !important;
+  font-weight: 800 !important;
+  font-size: calc(var(--gw-navbar-link-font-size) * 1.32) !important;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  margin: 0 -0.15rem;
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(125, 211, 252, 0.45),
+    0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
 .navbar .dropdown__link {
@@ -245,6 +259,17 @@ body,
   border-top: 1px solid rgba(148, 163, 184, 0.22);
   margin-top: 0.4rem;
   padding-top: 0.65rem;
+}
+
+/* 移动端抽屉：当前页链接同样强化 */
+.navbar-sidebar .menu__link--active {
+  font-weight: 800 !important;
+  font-size: 1.18rem !important;
+  line-height: 1.35 !important;
+  color: #e0f2fe !important;
+  background: rgba(56, 189, 248, 0.16) !important;
+  box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.35);
+  border-radius: 8px;
 }
 
 /* 文档页左侧侧栏背景（不刺眼） */
@@ -584,8 +609,9 @@ html {
   :root {
     /* 顶栏仅 Logo + 汉堡 + 主题切换时略矮即可 */
     --ifm-navbar-height: 3.5rem;
-    --gw-navbar-link-font-size: 1rem;
-    --gw-navbar-title-font-size: 0.75rem;
+    /* 手机/窄屏：顶栏与抽屉导航文字略缩小 */
+    --gw-navbar-link-font-size: 0.84rem;
+    --gw-navbar-title-font-size: 0.7rem;
     --ifm-navbar-padding-horizontal: 0.65rem;
     --ifm-navbar-item-padding-horizontal: 0.45rem;
     --ifm-navbar-item-padding-vertical: 0.2rem;
@@ -610,16 +636,69 @@ html {
     min-width: 0;
   }
 
-  /* 移动端：Logo + 标题横向排列，避免纵向占满半屏 */
+  /*
+   * 手机顶栏：仅保留 Logo → 电话 → 汉堡。
+   * 板块入口、案例/技术支持、主题切换等一律不显示在顶栏（仍在抽屉菜单内）。
+   */
+  .navbar__items--right {
+    display: none !important;
+  }
+
+  .navbar__inner > .navbar__items:not(.navbar__items--right) {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 0.45rem;
+  }
+
+  .navbar__inner
+    > .navbar__items:not(.navbar__items--right)
+    > .navbar__item:not(:has(a.gw-navbar-contact-tel)) {
+    display: none !important;
+  }
+
+  .navbar__inner
+    > .navbar__items:not(.navbar__items--right)
+    > .navbar__item:has(a.gw-navbar-contact-tel) {
+    order: 2;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0 !important;
+  }
+
+  .navbar__toggle {
+    order: 3;
+    margin-left: auto !important;
+  }
+
+  .navbar__inner > .navbar__items:not(.navbar__items--right) .gw-navbar-contact-tel {
+    border-left: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .navbar .navbar__link.gw-navbar-contact-tel::before {
+    display: none;
+  }
+
+  /* 移动端：Logo + 标题横向排列；order 与电话、汉堡从左到右 */
   .navbar__brand {
+    order: 1;
     flex-direction: row;
     align-items: center;
     align-self: center;
     gap: 0.4rem;
-    flex: 1 1 auto;
+    flex: 0 0 auto !important;
     min-width: 0;
-    max-width: calc(100% - 6.25rem);
-    margin-right: 0.25rem;
+    max-width: min(10rem, 46vw) !important;
+    margin-right: 0;
     overflow: hidden;
   }
 
@@ -652,38 +731,6 @@ html {
     align-self: center;
   }
 
-  /*
-   * 窄屏顶栏：带 gw-navbar-topbar-hide-sm 的项只在抽屉里出现（DefaultNavbarItem 把 class 合在 a.navbar__link 上），
-   * 避免「案例 / 技术支持」与 Logo、主题切换挤一行。
-   */
-  .navbar__items--right a.navbar__link.gw-navbar-topbar-hide-sm {
-    display: none !important;
-  }
-
-  /* 右侧：主题切换等（文字链已隐藏） */
-  .navbar__items--right {
-    flex-shrink: 0;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 0.15rem;
-    min-width: 0;
-  }
-
-  .navbar__items--right .navbar__link {
-    font-size: 0.8rem;
-    padding: 0.35rem 0.4rem;
-    white-space: nowrap;
-  }
-
-  .navbar__items--right .clean-btn {
-    min-width: 2.5rem;
-    min-height: 2.5rem;
-    padding: 0.35rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   /* 抽屉菜单 */
   .navbar-sidebar {
     width: min(20.5rem, calc(100vw - 0.5rem));
@@ -696,7 +743,7 @@ html {
   }
 
   .navbar-sidebar .menu__link {
-    font-size: 0.95rem;
+    font-size: 0.84rem;
     line-height: 1.35;
     padding: 0.65rem 0.7rem;
     min-height: 2.75rem;
@@ -723,6 +770,18 @@ html {
     margin-top: 0.12em;
   }
 
+  /* 窄屏：联系电话红色突出（顶栏若出现 / 抽屉内） */
+  .navbar .navbar__link.gw-navbar-contact-tel,
+  .navbar-sidebar .menu__link.gw-navbar-contact-tel {
+    color: #f87171 !important;
+    font-weight: 600;
+  }
+
+  .navbar .navbar__link.gw-navbar-contact-tel:hover,
+  .navbar-sidebar .menu__link.gw-navbar-contact-tel:hover {
+    color: #fca5a5 !important;
+  }
+
   .navbar-sidebar__brand {
     flex-direction: row;
     align-items: center;
@@ -746,6 +805,11 @@ html {
   .navbar-sidebar .navbar__link svg {
     flex-shrink: 0;
     opacity: 0.85;
+  }
+
+  /* 与缩小的抽屉正文相匹配的当前页强调字号 */
+  .navbar-sidebar .menu__link--active {
+    font-size: 1.02rem !important;
   }
 
   .gw-card,
@@ -817,6 +881,7 @@ html {
     --ifm-navbar-height: 3.25rem;
     --ifm-spacing-horizontal: 0.85rem;
     --ifm-navbar-padding-horizontal: 0.55rem;
+    --gw-navbar-link-font-size: 0.78rem;
   }
 
   .navbar__logo,
@@ -826,7 +891,7 @@ html {
   }
 
   .navbar__brand {
-    max-width: calc(100% - 5.75rem);
+    max-width: min(8.25rem, 38vw) !important;
     gap: 0.35rem;
   }
 
@@ -840,15 +905,12 @@ html {
     min-height: 2.5rem;
   }
 
-  .navbar__items--right .navbar__link {
-    font-size: 0.74rem;
-    padding: 0.3rem 0.32rem;
+  .navbar-sidebar .menu__link {
+    font-size: 0.78rem;
   }
 
-  .navbar__items--right .clean-btn {
-    min-width: 2.35rem;
-    min-height: 2.35rem;
-    padding: 0.28rem;
+  .navbar-sidebar .menu__link--active {
+    font-size: 0.95rem !important;
   }
 
   .gw-card,

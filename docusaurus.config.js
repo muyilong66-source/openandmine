@@ -7,7 +7,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '矿山综合解决方案',
+  title: '科学有效解决方案',
   tagline: '安全监测 科学防护 治理修复',
   favicon: 'img/favicon.ico',
 
@@ -109,7 +109,7 @@ const config = {
           },
           */
           {
-            label: '联系我们 182-0106-9835',
+            label: '18201069835 杨工',
             href: 'tel:18201069835',
             position: 'left',
             className: 'gw-navbar-contact-tel',
