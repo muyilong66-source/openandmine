@@ -602,7 +602,8 @@ html {
 }
 
 #__docusaurus {
-  overflow-x: clip;
+  /* hidden 比 clip 兼容更多旧版移动浏览器；仍抑制横向溢出 */
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 996px) {
@@ -654,15 +655,19 @@ html {
     gap: 0.45rem;
   }
 
+  /*
+   * 窄屏顶栏只保留「联系电话」：不用 :has()（部分手机浏览器不支持会导致规则整段失效、顶栏挤爆）。
+   * 依赖 docusaurus.config 左侧顺序：4 个板块 + 电话（若增删左侧项，需同步改 -n+4 与第 5 项）。
+   */
   .navbar__inner
     > .navbar__items:not(.navbar__items--right)
-    > .navbar__item:not(:has(a.gw-navbar-contact-tel)) {
+    > .navbar__item:nth-child(-n + 4) {
     display: none !important;
   }
 
   .navbar__inner
     > .navbar__items:not(.navbar__items--right)
-    > .navbar__item:has(a.gw-navbar-contact-tel) {
+    > .navbar__item:nth-child(5) {
     order: 2;
     flex: 1 1 auto;
     min-width: 0;

@@ -55,8 +55,6 @@ const featureList = [
   {
     title: '关于我们',
     icon: '🤝',
-    /** 临时隐藏首页卡片；恢复：设为 false 或删除本字段 */
-    hidden: true,
     description: (
       <>
         GeoWatch Solutions 团队与文化。

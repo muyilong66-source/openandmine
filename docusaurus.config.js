@@ -82,6 +82,7 @@ const config = {
           src: 'img/geowatch-logo.png',
         },
         items: [
+          /* 左侧前 4 项板块 + 电话顺序与 custom.css 移动端 nth-child 规则绑定；勿在中间插入项或改顺序。 */
           {
             label: '矿山（边坡）监测 ',
             to: '/docs/geowatch/intro',
@@ -100,14 +101,12 @@ const config = {
             position: 'left',
             className: 'gw-navbar-pillar gw-navbar-pillar--minetreat',
           },
-          /* 临时隐藏「关于我们」顶栏入口（文档仍保留，恢复时取消注释本段）
           {
             label: '关于我们',
             to: '/docs/about/intro',
             position: 'left',
             className: 'gw-navbar-pillar gw-navbar-pillar--about',
           },
-          */
           {
             label: '18201069835 杨工',
             href: 'tel:18201069835',
@@ -189,17 +188,10 @@ const config = {
               },
             ],
           },
-          /* 临时隐藏页脚「关于我们」列（恢复时取消注释）
           {
             title: '关于我们',
-            items: [
-              {label: '公司简介', to: '/docs/about/company/overview'},
-              {label: '团队风采', to: '/docs/about/team/management'},
-              {label: '企业文化', to: '/docs/about/culture/vision'},
-              {label: '加入我们', to: '/docs/about/join/why-us'},
-            ],
+            items: [{label: '关于我们', to: '/docs/about/intro'}],
           },
-          */
         ],
         copyright: `Copyright © ${new Date().getFullYear()} GeoWatch Solutions. Built with Docusaurus.`,
       },
