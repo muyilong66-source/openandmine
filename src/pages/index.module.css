@@ -1,0 +1,133 @@
+/**
+ * 首页 Hero：柔和底色 + 主标题放大
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  /* 与全站 #0F172A 协调的深蓝灰顶区 */
+  background: linear-gradient(
+    165deg,
+    #1e293b 0%,
+    #0f172a 45%,
+    #0b1220 100%
+  );
+  color: var(--ifm-font-color-base);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.heroTitle {
+  /* 相对默认 hero 标题约 1.5 倍 */
+  font-size: calc(var(--ifm-h1-font-size, 3rem) * 1.5) !important;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #f8fafc !important;
+  font-weight: 700;
+}
+
+.heroBanner :global(.hero__subtitle) {
+  color: var(--ifm-color-content-secondary);
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2.5rem 1rem;
+  }
+
+  .heroTitle {
+    font-size: calc(var(--ifm-h1-font-size, 2.25rem) * 1.35) !important;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 首页四大板块卡片（Infima row / col--6） */
+.features {
+  padding: 3rem 0 4rem;
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem);
+}
+
+.featureColumn {
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.featureCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+  box-shadow: var(--ifm-global-shadow-lw);
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.featureCard:hover {
+  border-color: var(--ifm-color-primary-light);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+/* 边坡工程防护：极浅灰底 + 深色字（与全站深色底对比） */
+.featureCardSlopeguard {
+  background: #f8f9fa !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+.featureCardSlopeguard:hover {
+  border-color: rgba(15, 23, 42, 0.22) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+}
+
+.featureCardSlopeguard .featureTitle {
+  color: #0f172a;
+}
+
+.featureCardSlopeguard .featureDesc {
+  color: #334155;
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.featureTitle {
+  font-size: 1.2rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+  color: var(--ifm-heading-color);
+}
+
+.featureDesc {
+  flex: 1;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ifm-color-content-secondary);
+}
+
+.featureLink {
+  margin-top: 1.25rem;
+}
+
+@media screen and (max-width: 996px) {
+  .features {
+    padding: 2rem 0 3rem;
+  }
+}
