@@ -1,10 +1,15 @@
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
+
+/** 首页 Hero：左现场图 + 右 SlopeGuard 文档图（均保留） */
+const HERO_IMAGE_LEFT = '/img/home-hero-slope.png';
+const HERO_IMAGE_RIGHT = '/img/slopeguard/flexible-slope/image7.png';
 
 const featureList = [
   {
@@ -22,7 +27,6 @@ const featureList = [
   {
     title: '边坡工程防护 SlopeGuard',
     icon: '🛡️',
-    theme: 'slopeguard',
     description: (
       <>
         排水、锚固与防护结构一体化方案。
@@ -58,14 +62,10 @@ const featureList = [
   },
 ];
 
-function Feature({icon, title, description, link, theme}) {
+function Feature({icon, title, description, link}) {
   return (
     <div className={clsx('col', 'col--6', styles.featureColumn)}>
-      <div
-        className={clsx(
-          styles.featureCard,
-          theme === 'slopeguard' && styles.featureCardSlopeguard,
-        )}>
+      <div className={styles.featureCard}>
         <div className={styles.featureIcon} aria-hidden>
           {icon}
         </div>
@@ -85,6 +85,14 @@ export function HomepageFeatures() {
   return (
     <section className={styles.features} aria-label="主要业务板块">
       <div className="container">
+        <header className={styles.featuresHeader}>
+          <Heading as="h2" className={styles.featuresHeading}>
+            四大业务板块
+          </Heading>
+          <p className={styles.featuresIntro}>
+            监测、防护、治理与团队 — 一站式工程与文档中心
+          </p>
+        </header>
         <div className="row">
           {featureList.map((props) => (
             <Feature key={props.title} {...props} />
@@ -95,27 +103,65 @@ export function HomepageFeatures() {
   );
 }
 
+function HeroSideVisual({src, alt, side}) {
+  return (
+    <div
+      className={clsx(
+        styles.heroVisual,
+        side === 'left' ? styles.heroVisualLeft : styles.heroVisualRight,
+      )}>
+      <div className={styles.heroImageWrap}>
+        <img
+          className={styles.heroImage}
+          src={src}
+          alt={alt}
+          width={740}
+          height={900}
+          decoding="async"
+        />
+        <div className={styles.heroImageScrim} aria-hidden />
+      </div>
+    </div>
+  );
+}
+
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const heroLeftSrc = useBaseUrl(HERO_IMAGE_LEFT);
+  const heroRightSrc = useBaseUrl(HERO_IMAGE_RIGHT);
   return (
     <header className={clsx('hero', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/geowatch/intro">
-            浏览解决方案
-          </Link>
-          <a
-            className="button button--outline button--secondary button--lg"
-            href="#gw-four-pillars">
-            业务板块
-          </a>
+      <div className={clsx('container', styles.heroInner)}>
+        <HeroSideVisual
+          src={heroLeftSrc}
+          alt="边坡工程现场：车载钻机与分级边坡施工"
+          side="left"
+        />
+        <div className={styles.heroText}>
+          <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
+            {siteConfig.title}
+          </Heading>
+          <p className={clsx('hero__subtitle', styles.heroSubtitle)}>
+            {siteConfig.tagline}
+          </p>
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/geowatch/intro">
+              浏览解决方案
+            </Link>
+            <a
+              className="button button--outline button--secondary button--lg"
+              href="#gw-four-pillars">
+              业务板块
+            </a>
+          </div>
         </div>
+        <HeroSideVisual
+          src={heroRightSrc}
+          alt="边坡工程防护（绿色装配式柔性护坡）"
+          side="right"
+        />
       </div>
     </header>
   );
@@ -128,8 +174,8 @@ export default function Home() {
       title={siteConfig.title}
       description="GeoWatch Solutions — 矿山（边坡）监测、边坡工程防护、矿山环境治理（酸性废水）与关于我们。">
       <HomepageHeader />
-      <main>
-        <div id="gw-four-pillars">
+      <main className={styles.homeMain}>
+        <div id="gw-four-pillars" className={styles.pillarsWrap}>
           <HomepageFeatures />
         </div>
       </main>

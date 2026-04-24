@@ -68,7 +68,7 @@ const LABELS = {
   'slopeguard/products/anchor/overview': '锚杆/锚索 · 概述',
   'slopeguard/products/anchor/specs': '锚杆/锚索 · 技术参数',
   'slopeguard/products/anchor/installation': '锚杆/锚索 · 安装',
-  'slopeguard/products/comprehensive-solution': '综合治理方案',
+  'slopeguard/products/comprehensive-solution': '绿色装配式柔性护坡',
   'slopeguard/cases/high-slope-protection': '高边坡防护',
   'slopeguard/cases/landslide-treatment': '滑坡治理',
   'slopeguard/cases/rockfall-protection': '落石防护',

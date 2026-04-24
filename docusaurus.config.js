@@ -7,16 +7,23 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'GeoWatch Solutions',
-  tagline: '矿山安全监测与边坡防护综合解决方案',
+  title: '矿山综合解决方案',
+  tagline: '安全监测 科学防护 治理修复',
   favicon: 'img/favicon.ico',
 
   future: {
-    v4: true,
+    // 与 v4: true 等效，但关闭 fasterByDefault：避免 Windows 上 Rspack dev 报错；构建走 Webpack + 下方 webpack 版本锁定
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+      useCssCascadeLayers: true,
+      siteStorageNamespacing: true,
+      fasterByDefault: false,
+      mdx1CompatDisabledByDefault: true,
+    },
   },
 
   url: 'https://geowatch-solutions.example.com',
-  baseUrl: '/',
+  baseUrl: '/openandmine/',
 
   organizationName: 'geowatch-solutions',
   projectName: 'geowatch-solutions',
@@ -76,19 +83,19 @@ const config = {
         },
         items: [
           {
-            label: '矿山（边坡）监测 GeoWatch',
+            label: '矿山（边坡）监测 ',
             to: '/docs/geowatch/intro',
             position: 'left',
             className: 'gw-navbar-pillar gw-navbar-pillar--geowatch',
           },
           {
-            label: '边坡工程防护 SlopeGuard',
+            label: '边坡工程防护',
             to: '/docs/slopeguard/intro',
             position: 'left',
             className: 'gw-navbar-pillar gw-navbar-pillar--slopeguard',
           },
           {
-            label: '矿山环境治理（酸性废水）',
+            label: '矿山环境治理',
             to: '/docs/minetreat/intro',
             position: 'left',
             className: 'gw-navbar-pillar gw-navbar-pillar--minetreat',
@@ -105,8 +112,19 @@ const config = {
             position: 'left',
             className: 'gw-navbar-contact-tel',
           },
-          {label: '案例中心', to: '/cases', position: 'right'},
-          {label: '技术支持', to: '/support', position: 'right'},
+          {
+            label: '案例中心',
+            to: '/cases',
+            position: 'right',
+            /* 移动端顶栏隐藏，仅抽屉菜单显示（见 custom.css） */
+            className: 'gw-navbar-topbar-hide-sm',
+          },
+          {
+            label: '技术支持',
+            to: '/support',
+            position: 'right',
+            className: 'gw-navbar-topbar-hide-sm',
+          },
         ],
       },
       footer: {

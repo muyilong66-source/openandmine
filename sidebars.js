@@ -126,29 +126,14 @@ const sidebars = {
       label: '解决方案及产品',
       collapsed: false,
       items: [
+        'slopeguard/products/comprehensive-solution',
         {
           type: 'category',
-          label: '波纹管排水系统',
-          items: [
-            'slopeguard/products/corrugated-pipe/installation',
-            'slopeguard/products/corrugated-pipe/specs',
-            'slopeguard/products/corrugated-pipe/overview',
-            'slopeguard/products/corrugated-pipe/drainage-calculation',
-          ],
-        },
-        {
-          type: 'category',
-          label: '主动防护网',
+          label: '主/被动防护网',
           items: [
             'slopeguard/products/active-net/installation',
             'slopeguard/products/active-net/specs',
             'slopeguard/products/active-net/overview',
-          ],
-        },
-        {
-          type: 'category',
-          label: '被动防护网',
-          items: [
             'slopeguard/products/passive-net/installation',
             'slopeguard/products/passive-net/specs',
             'slopeguard/products/passive-net/overview',
@@ -163,7 +148,16 @@ const sidebars = {
             'slopeguard/products/anchor/overview',
           ],
         },
-        'slopeguard/products/comprehensive-solution',
+        {
+          type: 'category',
+          label: '波纹管工程应用',
+          items: [
+            'slopeguard/products/corrugated-pipe/installation',
+            'slopeguard/products/corrugated-pipe/specs',
+            'slopeguard/products/corrugated-pipe/overview',
+            'slopeguard/products/corrugated-pipe/drainage-calculation',
+          ],
+        },
       ],
     },
     {

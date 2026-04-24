@@ -17,7 +17,7 @@ export default function SlopeGuardSection() {
           to="/docs/slopeguard/products/corrugated-pipe/overview"
           className="sub-item">
           <h3>解决方案及产品</h3>
-          <p>波纹管排水 · 主/被动防护网 · 锚杆锚索 · 综合治理方案</p>
+          <p>绿色装配式柔性护坡 · 主/被动防护网 · 锚杆锚索 · 波纹管工程应用</p>
         </Link>
 
         <Link
